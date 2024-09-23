@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace IBroStudio\NeonConfig\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class NeonConfigCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-neon-config';
 
     public $description = 'My command';
 
