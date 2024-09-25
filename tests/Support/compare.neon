@@ -1,0 +1,12 @@
+simple: ok
+array:
+    array_key: array_value
+enum: test
+collection:
+    - test
+    - test2
+    - test3
+name: app.name(type: config, default: null)
+url: unknown(type: config, default: null)
+environment: APP_ENV(type: env, default: null)
+key: UNKNOWN(type: env, default: null)

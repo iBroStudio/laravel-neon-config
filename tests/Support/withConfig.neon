@@ -1,0 +1,2 @@
+name: app.name(type: config)
+url: unknow(type: config, default: "https://laravel.com")

@@ -2,9 +2,12 @@
 
 namespace IBroStudio\NeonConfig\Tests;
 
+use IBroStudio\FakeEndPackage\FakeEndPackageServiceProvider;
+use IBroStudio\FakePackage\FakePackageServiceProvider;
+use IBroStudio\FakePackage\FakePackageServiceProviderWithoutPackageServiceProvider;
+use IBroStudio\NeonConfig\NeonConfigServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use IBroStudio\NeonConfig\NeonConfigServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -21,6 +24,9 @@ class TestCase extends Orchestra
     {
         return [
             NeonConfigServiceProvider::class,
+            FakePackageServiceProvider::class,
+            FakePackageServiceProviderWithoutPackageServiceProvider::class,
+            FakeEndPackageServiceProvider::class,
         ];
     }
 

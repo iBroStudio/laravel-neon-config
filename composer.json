@@ -4,7 +4,9 @@
     "keywords": [
         "iBroStudio",
         "laravel",
-        "laravel-neon-config"
+        "neon",
+        "config",
+        "package"
     ],
     "homepage": "https://github.com/ibrostudio/laravel-neon-config",
     "license": "MIT",
@@ -15,10 +17,13 @@
             "role": "Developer"
         }
     ],
+    "version": "1.0.0",
     "require": {
-        "php": "^8.2",
-        "spatie/laravel-package-tools": "^1.16",
-        "illuminate/contracts": "^10.0||^11.0"
+        "php": "^8.3",
+        "illuminate/contracts": "^10.0||^11.0",
+        "nette/neon": "^3.4",
+        "spatie/laravel-data": "^4.9",
+        "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
         "laravel/pint": "^1.14",
@@ -34,20 +39,22 @@
     },
     "autoload": {
         "psr-4": {
-            "IBroStudio\\NeonConfig\\": "src/",
-            "IBroStudio\\NeonConfig\\Database\\Factories\\": "database/factories/"
+            "IBroStudio\\NeonConfig\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "IBroStudio\\NeonConfig\\Tests\\": "tests/"
+            "IBroStudio\\NeonConfig\\Tests\\": "tests/",
+            "IBroStudio\\FakePackage\\": "tests/Support/fake-package/src/",
+            "IBroStudio\\FakeEndPackage\\": "tests/Support/fake-end-package/src/"
         }
     },
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/pint"
+        "format": "vendor/bin/pint",
+        "full-check": "composer format && composer test && composer analyse"
     },
     "config": {
         "sort-packages": true,

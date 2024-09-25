@@ -1,0 +1,7 @@
+casts:
+    - enum: \IBroStudio\NeonConfig\Tests\Support\FakeEnum
+    - collection: AsEnumCollection::\IBroStudio\NeonConfig\Tests\Support\FakeEnum
+    - name: AsConfig::app.name
+    - url: AsConfig::unknown
+    - environment: AsEnv::APP_ENV
+    - key: AsEnv::UNKNOWN
