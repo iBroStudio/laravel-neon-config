@@ -1,3 +1,6 @@
 # Changelog
+All notable changes to this project will be documented in this file.
+ 
+## [1.1.0](https://github.com/iBroStudio/laravel-neon-config/compare/v1.0.0...HEAD) (2024-11-26)
 
-All notable changes to `laravel-neon-config` will be documented in this file.
+---
