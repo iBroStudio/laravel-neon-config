@@ -4,7 +4,7 @@
 
 The goal of this package is to provide a config file available outside the context of a Laravel app.
 
-For example : a package used as a dev dependency of another package.
+For example : a package used as a dev dependency of another package or just as env file for tests when developing a package.
 
 **This package allows you to use a .neon file to overwrite a Laravel config file.**
 
@@ -150,6 +150,38 @@ your-package.neon:
 key1: other.config.key(type: config, default: 'other default value')
 key2: OTHER_ENV(type: env)
 ```
+
+## Usage as env file for tests when developing a package
+
+### Configuration
+
+- Add the trait to TestCase instead of the package service provider:
+```php
+use IBroStudio\NeonConfig\Concerns\UseNeonConfig;
+
+class TestCase extends Orchestra
+{
+    use UseNeonConfig;
+```
+
+And add in `getEnvironmentSetUp`:
+```php
+public function getEnvironmentSetUp($app)
+{
+    $this->handleNeon('test')->forConfig('test');
+}
+```
+
+- Create a neon file at the root of your package, example : test.neon.
+
+Add it to .gitignore and populate it with variables:
+```neon
+key1: test-value-1
+key2: test-value-2
+```
+
+- During tests, you can now call variable with `config('test.key')`:
+
 
 ## Testing
 
