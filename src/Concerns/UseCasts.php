@@ -45,7 +45,7 @@ trait UseCasts
             return new AsEnv(Str::after($this->casts[$laravelConfigKey], '::'));
         }
 
-        //throw new Exception('Cast not found for config key : '.$laravelConfigKey);
+        // throw new Exception('Cast not found for config key : '.$laravelConfigKey);
 
         return new ('\\IBroStudio\\NeonConfig\\Casts\\'.$this->casts[$laravelConfigKey])($value);
     }
