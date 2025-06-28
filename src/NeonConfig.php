@@ -168,24 +168,32 @@ final class NeonConfig
             return $this;
         }
 
-        throw new Exception($this->neonFilePath.' is not compatible with Laravel compatible.');
+        throw new Exception($this->neonFilePath.' is not compatible with Laravel.');
     }
 
     protected function merge(): bool
     {
-        Config::set($this->laravelConfig, array_merge(
-            Config::get($this->laravelConfig) ?? [],
+        $config = Config::get($this->laravelConfig) ?? [];
+
+        Config::set($this->laravelConfig, $this->array_merge_recursive_distinct(
+            $config,
             $this->valuesFromNeon
         ));
 
         return true;
     }
-}
 
-/*
- * hommebijoux_db
- * hommebijoux_dbu
- * z6PKAjIgdQVzrcmtE2YU
- *
- *
- */
+    private function array_merge_recursive_distinct(array &$base, array &$add): array
+    {
+        $merged = $base;
+        foreach ($add as $key => &$value) {
+            if (is_array($value) && isset($merged[$key]) && is_array($merged[$key])) {
+                $merged[$key] = $this->array_merge_recursive_distinct($merged[$key], $value);
+            } else {
+                $merged[$key] = $value;
+            }
+        }
+
+        return $merged;
+    }
+}

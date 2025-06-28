@@ -44,7 +44,7 @@ it('throws error on invalid neon file', function () {
     (new NeonConfig)
         ->handleNeon('invalid.neon', __DIR__.'/Support')
         ->forLaravelConfig('neon-config');
-})->throws(Exception::class, __DIR__.'/Support/invalid.neon is not compatible with Laravel compatible.');
+})->throws(Exception::class, __DIR__.'/Support/invalid.neon is not compatible with Laravel.');
 
 it('can cast to enum', function () {
     (new NeonConfig)
